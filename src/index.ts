@@ -1,3 +1,4 @@
+
 /**
  * _Calculates the factorial of a number_
  * @param n The number for which we want to calculate its factorial
@@ -7,11 +8,11 @@
  * factorial(10)
  * ```
  */
-function factorial(n: number) {
+export function factorial(n: number) {
   if (n === 1) {
     return 1;
   }
   return n * factorial(n - 1);
 }
 
-console.log(factorial(10));
+// console.log(factorial(10));
