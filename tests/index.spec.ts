@@ -8,6 +8,6 @@ describe("Factorial function tests", () => {
   });
   
   it("Factorial(4) should return 24", () => {
-    expect(factorial(4)).to.be.equal(25);
+    expect(factorial(4)).to.be.equal(24);
   });
 });
