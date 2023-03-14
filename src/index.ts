@@ -16,7 +16,7 @@ export function factorial(n: number) {
 }
 
 /**
- * 
+ * _Calculates the addition of two numbers_
  * @param n1 First operand of addition
  * @param n2 Second operand of addition
  * @returns The addition of n1 and n2
