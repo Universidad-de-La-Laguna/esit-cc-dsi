@@ -15,4 +15,16 @@ export function factorial(n: number) {
   return n * factorial(n - 1);
 }
 
-// console.log(factorial(10));
+/**
+ * 
+ * @param n1 First operand of addition
+ * @param n2 Second operand of addition
+ * @returns The addition of n1 and n2
+ * ```ts
+ * add(3, 5)
+ * add(7.6, -3.5)
+ * ```
+ */
+export function add(n1: number, n2: number) {
+  return n1 + n2;
+}
