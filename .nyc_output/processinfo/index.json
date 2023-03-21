@@ -1,0 +1,1 @@
+{"processes":{"1808da2d-7bc8-4400-b0ed-12be8056b62d":{"parent":null,"children":["305d32c2-a7d4-4a26-87fa-c450d18178ec"]},"305d32c2-a7d4-4a26-87fa-c450d18178ec":{"parent":"1808da2d-7bc8-4400-b0ed-12be8056b62d","children":[]}},"files":{"/home/usuario/theory-examples/src/index.ts":["305d32c2-a7d4-4a26-87fa-c450d18178ec"]},"externalIds":{}}
