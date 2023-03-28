@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {add, factorial} from '../src/index'
+import {add, factorial} from '../src/index.js'
 
 describe("Factorial function tests", () => {
   it("Factorial(3) should return 6", () => {
