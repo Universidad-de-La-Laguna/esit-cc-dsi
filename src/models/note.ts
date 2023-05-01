@@ -1,15 +1,16 @@
 import { Document, Schema, model } from 'mongoose';
+import { UserDocumentInterface } from './user.js';
 
 interface NoteDocumentInterface extends Document {
   title: string,
   body: string,
-  color?: 'blue' | 'green' | 'red' | 'yellow' | 'magenta'
+  color?: 'blue' | 'green' | 'red' | 'yellow' | 'magenta',
+  owner: UserDocumentInterface,
 }
 
 const NoteSchema = new Schema<NoteDocumentInterface>({
   title: {
     type: String,
-    unique: true,
     required: true,
     trim: true,
     validate: (value: string) => {
@@ -29,6 +30,11 @@ const NoteSchema = new Schema<NoteDocumentInterface>({
     default: 'yellow',
     enum: ['blue', 'green', 'red', 'yellow', 'magenta'],
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  }
 });
 
 export const Note = model<NoteDocumentInterface>('Note', NoteSchema);

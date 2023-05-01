@@ -1,16 +1,43 @@
 import express from 'express';
 import { Note } from '../models/note.js';
+import { User } from '../models/user.js';
 
 export const noteRouter = express.Router();
 
 noteRouter.post('/notes', (req, res) => {
-  const note = new Note(req.body);
+  if (!req.query.email) {
+    res.status(400).send({
+      error: 'An email must be provided',
+    });
+  } else {
+    // Find the user with that email
+    User.findOne({email: req.query.email.toString()}).then((user) => {
+      if (!user) {
+        res.status(404).send({
+          error: "User not found"
+        });
+      } else {
+        // Instance of the new note that consists of the body
+        // provided in the request and the _id of the owner
+        const note = new Note({
+          ...req.body,
+          owner: user._id
+        });
 
-  note.save().then((note) => {
-    res.status(201).send(note);
-  }).catch((error) => {
-    res.status(400).send(error);
-  });
+        // Save the note
+        return note.save().then((note) => {
+          return note.populate({
+            path: 'owner',
+            select: ['name', 'email']
+          }).then(() => {
+            res.status(201).send(note);
+          });
+        });
+      }
+    }).catch((error) => {
+      res.status(500).send(error);
+    });
+  }
 });
 
 noteRouter.get('/notes', (req, res) => {
