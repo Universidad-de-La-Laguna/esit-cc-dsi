@@ -15,7 +15,7 @@ userRouter.post('/users', (req, res) => {
 });
 
 userRouter.get('/users', (req, res) => {
-  const filter = req.query.email?{email: req.query.email.toString()}:{};
+  const filter = req.query.username?{username: req.query.username.toString()}:{};
 
   User.find(filter).then((users) => {
     if (users.length !== 0) {
@@ -29,12 +29,12 @@ userRouter.get('/users', (req, res) => {
 });
 
 userRouter.patch('/users', (req, res) => {
-  if (!req.query.email) {
+  if (!req.query.username) {
     res.status(400).send({
-      error: 'An email must be provided',
+      error: 'A username must be provided',
     });
   } else {
-    const allowedUpdates = ['name', 'email', 'age'];
+    const allowedUpdates = ['name', 'username', 'email', 'age'];
     const actualUpdates = Object.keys(req.body);
     const isValidUpdate =
       actualUpdates.every((update) => allowedUpdates.includes(update));
@@ -44,7 +44,7 @@ userRouter.patch('/users', (req, res) => {
         error: 'Update is not permitted',
       });
     } else {
-      User.findOneAndUpdate({email: req.query.email.toString()}, req.body, {
+      User.findOneAndUpdate({username: req.query.username.toString()}, req.body, {
         new: true,
         runValidators: true,
       }).then((user) => {
@@ -61,12 +61,12 @@ userRouter.patch('/users', (req, res) => {
 });
 
 userRouter.delete('/users', (req, res) => {
-  if (!req.query.email) {
+  if (!req.query.username) {
     res.status(400).send({
-      error: 'An email must be provided',
+      error: 'A username must be provided',
     });
   } else {
-    User.findOne({email: req.query.email.toString()}).then((user) => {
+    User.findOne({username: req.query.username.toString()}).then((user) => {
       if (!user) {
         res.status(404).send();
       } else {

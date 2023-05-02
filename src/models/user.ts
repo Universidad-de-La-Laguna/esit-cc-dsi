@@ -3,6 +3,7 @@ import validator from 'validator';
 
 export interface UserDocumentInterface extends Document {
   name: string;
+  username: string;
   email: string;
   age?: number;
 }
@@ -13,9 +14,14 @@ const UserSchema = new Schema<UserDocumentInterface>({
     required: true,
     trim: true
   },
-  email: {
+  username: {
     type: String,
     unique: true,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
     required: true,
     trim: true,
     lowercase: true,
