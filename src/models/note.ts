@@ -1,5 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
-import { UserDocumentInterface } from './user.mjs';
+import { UserDocumentInterface } from './user.js';
 
 interface NoteDocumentInterface extends Document {
   title: string,

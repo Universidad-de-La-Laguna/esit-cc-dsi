@@ -1,9 +1,9 @@
 import express from 'express';
 import serverless from 'serverless-http';
-import './db/mongoose.mjs';
-import { noteRouter } from './routers/note.mjs';
-import { userRouter } from './routers/user.mjs'
-import { defaultRouter } from './routers/default.mjs';
+import './db/mongoose.js';
+import { noteRouter } from './routers/note.js';
+import { userRouter } from './routers/user.js'
+import { defaultRouter } from './routers/default.js';
 
 export const app = express();
 app.use(express.json());

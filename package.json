@@ -2,12 +2,12 @@
   "name": "notes-rest-api",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.mjs",
-    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.env node dist/index.mjs\"",
+    "start": "node dist/index.js",
+    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.env node dist/index.js\"",
     "doc": "typedoc",
     "test": "env-cmd -f ./config/test.env mocha --exit",
     "coverage": "c8 npm test && c8 report --reporter=lcov"
@@ -37,10 +37,8 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@netlify/functions": "^2.6.0",
     "express": "^4.19.2",
     "mongoose": "^8.3.2",
-    "serverless-http": "^3.2.0",
     "validator": "^13.11.0"
   }
 }
