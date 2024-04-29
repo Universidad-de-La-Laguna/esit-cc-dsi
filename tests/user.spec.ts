@@ -29,7 +29,6 @@ describe('POST /users', () => {
       email: "agarcia@example.com",
     });
 
-
     const secondUser = await User.findById(response.body._id);
     expect(secondUser).not.to.be.null;
     expect(secondUser!.username).to.equal('agarcia');
