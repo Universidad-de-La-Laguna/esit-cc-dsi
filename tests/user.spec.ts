@@ -18,21 +18,21 @@ beforeEach(async () => {
 describe('POST /users', () => {
   it('Should successfully create a new user', async () => {
     const response = await request(app).post('/users').send({
-      name: "Alejandro Marrero",
-      username: "amarrerd",
-      email: "amarrerd@example.com",
+      name: "Alejandro García",
+      username: "agarcia",
+      email: "agarcia@example.com",
     }).expect(201);
 
     expect(response.body).to.include({
-      name: "Alejandro Marrero",
-      username: "amarrerd",
-      email: "amarrerd@example.com",
+      name: "Alejandro García",
+      username: "agarcia",
+      email: "agarcia@example.com",
     });
 
 
     const secondUser = await User.findById(response.body._id);
     expect(secondUser).not.to.be.null;
-    expect(secondUser!.username).to.equal('amarrerd');
+    expect(secondUser!.username).to.equal('agarcia');
   });
 
   it('Should get an error', async () => {
