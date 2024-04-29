@@ -2,12 +2,12 @@
   "name": "notes-rest-api",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.env node dist/index.js\"",
+    "start": "node dist/index.mjs",
+    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.env node dist/index.mjs\"",
     "doc": "typedoc",
     "test": "env-cmd -f ./config/test.env mocha --exit",
     "coverage": "c8 npm test && c8 report --reporter=lcov"

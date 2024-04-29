@@ -1,6 +1,6 @@
 import express from 'express';
-import { User } from '../models/user.js';
-import { Note } from '../models/note.js';
+import { User } from '../models/user.mjs';
+import { Note } from '../models/note.mjs';
 
 export const userRouter = express.Router();
 
