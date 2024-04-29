@@ -1,5 +1,4 @@
 import express from 'express';
-import serverless from 'serverless-http';
 import './db/mongoose.js';
 import { noteRouter } from './routers/note.js';
 import { userRouter } from './routers/user.js'
@@ -16,5 +15,3 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
-
-export const handler = serverless(app);

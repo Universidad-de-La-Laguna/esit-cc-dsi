@@ -1,8 +1,8 @@
 
 import request from 'supertest';
 import { expect } from 'chai';
-import { app } from '../src/index.mjs';
-import { User } from '../src/models/user.mjs';
+import { app } from '../src/index.js';
+import { User } from '../src/models/user.js';
 
 const firstUser = {
   name: "Eduardo Segredo",
