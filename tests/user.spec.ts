@@ -46,5 +46,6 @@ describe('GET /users', () => {
 
   it('Should not find a user by username', async () => {
     await request(app).get('/users?username=edusegre').expect(404);
+    await request(app).get('/users?username=edu').expect(404);
   });
 });
