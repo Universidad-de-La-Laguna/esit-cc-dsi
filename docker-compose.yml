@@ -1,0 +1,40 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mgpassword
+
+  express-app:
+    build: ./
+    container_name: express-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app  # This mounts the directory at /usr/src/app inside the container
+    depends_on:
+      - mongo
+    env_file:
+      - ./config/dev.env
+    command: sh -c "npm install && npx tsc && npm start"
+
+  express-app-tests:
+    build: ./
+    container_name: express-app-tests
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/app  # This mounts the directory at /usr/src/app inside the container
+    depends_on:
+      - mongo
+    env_file:
+      - ./config/test.env
+    command: sh -c "npm install && npx tsc && npm test"
+
+volumes:
+  mongo-data:
