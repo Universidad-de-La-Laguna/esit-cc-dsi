@@ -1,0 +1,24 @@
+services:
+  mongo:
+    image: mongo:8.0.4
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    env_file:
+        - ./config/pro.env
+
+  express-app:
+    image: ghcr.io/universidad-de-la-laguna/esit-cc-dsi/esit-cc-dsi:0.0.1
+    container_name: express-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    env_file:
+      - ./config/pro.env
+    command: sh -c "npm install && npx tsc && npm start"
+
+volumes:
+  mongo-data:
