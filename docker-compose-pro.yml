@@ -18,7 +18,8 @@ services:
       - mongo
     env_file:
       - ./config/pro.env
-    command: sh -c "npm install && npx tsc && npm start"
+    command: ["npm", "start"]
+
 
 volumes:
   mongo-data:
