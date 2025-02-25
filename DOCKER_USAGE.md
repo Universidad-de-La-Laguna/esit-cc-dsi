@@ -64,7 +64,7 @@ Comando para subir las imágenes de los contenedores a registro de GitHub
 docker login ghcr.io -u pgonyan
 docker compose build
 docker compose push
-```
+````
 
 ## Despligue
 
